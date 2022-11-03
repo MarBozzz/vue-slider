@@ -108,13 +108,13 @@ body {
   /*flex-wrap: wrap;*/
 }
 
-.current-thumb {
+.current-thumb img{
   height: 100%;
   width: 100%;
   opacity: 0.5;
 }
 
-.current-thumb.active {
+.current-thumb img.active {
   border: 2px solid rgb(180, 180, 9);
   opacity: 1;
 }

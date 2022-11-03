@@ -1,7 +1,9 @@
 /*Descrizione:
 Partendo dal markup della versione svolta in js plain, rifare lo slider ma questa volta usando Vue.
 - al click su una thumb, visualizzare in grande l’immagine corrispondente
-- aggiungere la classe active alla thumb attivaBonus:
+- aggiungere la classe active alla thumb attiva.
+
+Bonus:
 1- applicare l’autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente
 2- quando il mouse va in hover sullo slider, bloccare l’autoplay e farlo riprendere quando esce
 */
@@ -37,6 +39,17 @@ createApp ({
     }
   },
   methods: {
-    //functions
+    changeImg(index){
+      this.activeImage=index;
+    },
+    nextPrev(isNext){
+      if (isNext) this.activeImage++;
+      else this.activeImage--;
+      if (this.activeImage === this.carouselData.images.length) {
+        this.activeImage = 0;
+      } else if (this.activeImage < 0) {
+        this.activeImage = this.carouselData.images.length - 1;
+      }
+    }
   }
 }).mount('#app');

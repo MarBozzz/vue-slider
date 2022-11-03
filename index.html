@@ -18,29 +18,33 @@
            <div class="slider-container">
               <div class="current-image">
                 <img 
-                class="" 
-                :src="carouselData.images[activeImage]" 
-                alt="Foto">
+                  class="" 
+                  :src="carouselData.images[activeImage]" 
+                  alt="Foto">
                 <div class="text">
-                  <h2 v-for="(title, index) in carouselData.titles" class="">{{title}}{{index}}</h2>
-                  <p 
-                  v-for="description in carouselData.descriptions"
-                  class="">{{description}}</p>
+                  <h2>{{carouselData.titles[activeImage]}}</h2>
+                  <p>{{carouselData.descriptions[activeImage]}}</p>
                 </div>
               </div>
           </div> 
           
           <div class="bottom-container">
-            <div class="btn prev">&larr;</div>
-            <div class="btn next">&rarr;</div>
+            <div 
+              @click="nextPrev(false)"
+              class="btn prev">&larr;</div>
+
+            <div 
+              @click="nextPrev(true)"
+              class="btn next">&rarr;</div>
   
             <div class="thumbs-container d-flex">
               <div class="current-thumb d-flex">
                 <img 
-                v-for="image in carouselData.images"
-                class="" 
-                :src="image" 
-                alt="Foto">
+                  v-for="(image, index) in carouselData.images"
+                  :class="{'active':index === activeImage}" 
+                  :src="image" 
+                  @click="changeImg(index)"
+                  alt="Foto">
               </div>
             
             </div>
