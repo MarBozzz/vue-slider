@@ -4,52 +4,55 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3"></script>
   <link rel="stylesheet" href="css/style.css">
   <title>Vue Slider</title>
 </head>
 <body>
+
+  <div id="app">
+    <div class="wrapper d-flex justify-center align-center">
+      <div class="first-container d-flex flex-column align-center">
+        <div class="container">
   
-  <div class="wrapper d-flex justify-center align-center">
-    <div class="first-container d-flex flex-column align-center">
-      <div class="container">
-
-         <div class="slider-container">
-            <div class="current-image">
-              <img class="" src="https://static1.evcdn.net/images/reduction/1583177_w-1920_h-1080_q-70_m-crop.jpg" alt="Foto1">
-              <div class="text">
-                <h2 class="title">Argentina</h2>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ad qui illum eius aspernatur exercitationes</p>
+           <div class="slider-container">
+              <div class="current-image">
+                <img 
+                class="" 
+                :src="carouselData.images[activeImage]" 
+                alt="Foto">
+                <div class="text">
+                  <h2 v-for="(title, index) in carouselData.titles" class="">{{title}}{{index}}</h2>
+                  <p 
+                  v-for="description in carouselData.descriptions"
+                  class="">{{description}}</p>
+                </div>
               </div>
-            </div>
-        </div> 
-        
-        <div class="bottom-container">
-          <div class="btn prev">&larr;</div>
-          <div class="btn next">&rarr;</div>
-
-          <div class="thumbs-container d-flex">
-            <div class="current-thumb d-flex">
-                <img class="" src="https://static1.evcdn.net/images/reduction/1583177_w-1920_h-1080_q-70_m-crop.jpg" alt="Foto">
-            </div>
-            <div class="current-thumb d-flex">
-                <img class="" src="https://static1.evcdn.net/images/reduction/1583177_w-1920_h-1080_q-70_m-crop.jpg" alt="Foto">
-            </div>
-            <div class="current-thumb d-flex">
-                <img class="" src="https://static1.evcdn.net/images/reduction/1583177_w-1920_h-1080_q-70_m-crop.jpg" alt="Foto">
-            </div>
-            <div class="current-thumb d-flex">
-                <img class="" src="https://static1.evcdn.net/images/reduction/1583177_w-1920_h-1080_q-70_m-crop.jpg" alt="Foto">
-            </div>
-            <div class="current-thumb d-flex">
-                <img class="" src="https://static1.evcdn.net/images/reduction/1583177_w-1920_h-1080_q-70_m-crop.jpg" alt="Foto">
+          </div> 
+          
+          <div class="bottom-container">
+            <div class="btn prev">&larr;</div>
+            <div class="btn next">&rarr;</div>
+  
+            <div class="thumbs-container d-flex">
+              <div class="current-thumb d-flex">
+                <img 
+                v-for="image in carouselData.images"
+                class="" 
+                :src="image" 
+                alt="Foto">
+              </div>
+            
             </div>
           </div>
         </div>
-
+  
       </div>
     </div>
-    
+      
+    </div>
   </div>
+  
 
   <script src="js/script.js"></script>
 </body>
