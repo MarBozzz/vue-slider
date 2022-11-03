@@ -35,7 +35,11 @@ createApp ({
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque exercitationem quaerat','Lorem ipsum dolor sit amet consectetur adipisicing elit.'
         ]
       },
-      activeImage : 0
+      activeImage : 0,
+      isNext: true,
+      isClicked: false,
+      startInterval : ''
+
     }
   },
   methods: {
@@ -50,6 +54,22 @@ createApp ({
       } else if (this.activeImage < 0) {
         this.activeImage = this.carouselData.images.length - 1;
       }
+    },
+    
+    autoplay(){
+      if(this.isClicked === false){
+        this.startInterval  = setInterval(() =>
+        this.nextPrev('isNext'), 3000);
+        this.isClicked=true;
+      } else {
+       clearInterval(this.startInterval);
+       this.isClicked = false;
+      }
+    },
+    
+    stopAutoplay(){
+      clearInterval(this.startInterval);
+      this.isClicked = false;
     }
   }
 }).mount('#app');
